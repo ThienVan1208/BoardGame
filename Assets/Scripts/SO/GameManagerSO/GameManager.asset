@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efdde0e7d5594341ad43ea6d8a2788f, type: 3}
+  m_Name: GameManager
+  m_EditorClassIdentifier: 
+  rollEvent: {fileID: 11400000, guid: 589752a850a0a2c4da7519c382c41fd8, type: 2}
+  moveEvent: {fileID: 11400000, guid: 1d9b3e1c7c3506643ad7a1f860435bfb, type: 2}
+  endMoveEvent: {fileID: 11400000, guid: 40430602a50943442884869b591b5051, type: 2}
+  beginMoveEvent: {fileID: 11400000, guid: 4a4765e4e5dcfb74283e5e216a98f000, type: 2}
