@@ -9,6 +9,15 @@ public class CellIndicator : MonoBehaviour
     [SerializeField] private Grid grid;
     [SerializeField] SOGameManager gameManagerSO;
     public Vector3 getPos;
+    private void OnEnable() {
+        // Subcribe playerMove in gameManagerSO.
+        gameManagerSO.playerMove = gameManagerSO.gameControl.CharMoveEvent.PlayerMovement;
+        gameManagerSO.playerMove.Enable();
+        gameManagerSO.playerMove.performed += gameManagerSO.PlayerMove;
+    }
+    private void OnDisable() {
+        gameManagerSO.playerMove.Disable();
+    }
     private void FollowMousePos()
     {
         Vector3 mousePos = Input.mousePosition;
@@ -26,8 +35,8 @@ public class CellIndicator : MonoBehaviour
     }
     private void Update() {
         FollowMousePos();
-        if(Input.GetMouseButtonDown(0)){
-            gameManagerSO.ActiveMoveEvent();
-        }
+        // if(Input.GetMouseButtonDown(0)){
+        //     gameManagerSO.ActiveMoveEvent();
+        // }
     }
 }

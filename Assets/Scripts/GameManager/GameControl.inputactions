@@ -1,0 +1,102 @@
+{
+    "name": "GameControl",
+    "maps": [
+        {
+            "name": "MoveEvent",
+            "id": "82ee9d8f-89bd-493f-aa40-dacb096f0dc0",
+            "actions": [
+                {
+                    "name": "BeginMove",
+                    "type": "Button",
+                    "id": "c13eb4f1-bda0-4552-a551-0bad26b1245d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EndMove",
+                    "type": "Button",
+                    "id": "4316614c-f0ba-44da-82a9-0e5822806185",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RollDice",
+                    "type": "Button",
+                    "id": "1fc00d4f-a666-441e-84ac-245903841425",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "eeb0e608-0e50-4739-ab1f-0e56efd5f179",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BeginMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "03c3561f-c518-45f4-8eb4-7409b51370ca",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EndMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "893b1d67-34c7-42b6-a63c-fa755586fcf8",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RollDice",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "CharMoveEvent",
+            "id": "1551ba31-3f61-4770-8efe-864152140837",
+            "actions": [
+                {
+                    "name": "PlayerMovement",
+                    "type": "Button",
+                    "id": "cc335734-f307-4652-a02f-7837131feecd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "33df91e1-6052-4178-ab40-8f0dd929a90d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/*
+    * This class sets active true/false cellIndicator when
+    beginMoveEvent/endMoveEvent actions.
+*/
 public class DetectCellMove : MonoBehaviour
 {
     [SerializeField] private GameObject cellIndicator;

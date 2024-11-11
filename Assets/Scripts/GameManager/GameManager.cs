@@ -1,45 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private SOGameManager gameManagerSO;
-    [SerializeField] private Button endMoveButton;
+    
+    
+    private void Awake()
+    {
+        gameManagerSO.gameControl = new GameControl();
+    }
     private void OnEnable()
     {
-        gameManagerSO.beginMoveEvent.voidEvent += ActiveEndMoveBut;
-        gameManagerSO.endMoveEvent.voidEvent += InactiveEndMoveBut;
+        // Subcribe beginMove
+        gameManagerSO.beginMove = gameManagerSO.gameControl.MoveEvent.BeginMove;
+        gameManagerSO.beginMove.Enable();
+        gameManagerSO.beginMove.performed += gameManagerSO.BeginMove;
+
+        // Subcribe endMove
+        gameManagerSO.endMove = gameManagerSO.gameControl.MoveEvent.EndMove;
+        gameManagerSO.endMove.Enable();
+        gameManagerSO.endMove.performed += gameManagerSO.EndMove;
+
+        // Subcribe rollDice
+        gameManagerSO.rollDice = gameManagerSO.gameControl.MoveEvent.RollDice;
+        gameManagerSO.rollDice.Enable();
+        gameManagerSO.rollDice.performed += gameManagerSO.RollDice;
+
+
     }
     private void OnDisable()
     {
-        gameManagerSO.beginMoveEvent.voidEvent -= ActiveEndMoveBut;
-        gameManagerSO.endMoveEvent.voidEvent -= InactiveEndMoveBut;
-    }
-
-    private void Start()
-    {
-        endMoveButton.gameObject.SetActive(false);
-    }
-    public void ActiveRollEvent()
-    {
-        gameManagerSO.rollEvent.RaisedEvent();
-    }
-    public void ActiveBeginMoveEvent()
-    {
-        gameManagerSO.beginMoveEvent.RaisedEvent();
-    }
-    public void ActiveEndMoveEvent(){
-        gameManagerSO.endMoveEvent.RaisedEvent();
-    }
-    private void ActiveEndMoveBut()
-    {
-        endMoveButton.gameObject.SetActive(true);
-    }
-    private void InactiveEndMoveBut()
-    {
-        endMoveButton.gameObject.SetActive(false);
+        gameManagerSO.beginMove.Disable();
+        gameManagerSO.endMove.Disable();
+        gameManagerSO.rollDice.Disable();
     }
 
 }
+

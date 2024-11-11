@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
    [SerializeField] private CellIndicator detectCellMove;
    [SerializeField] private float speed;
    [SerializeField] private SOGameManager gameManagerSO;
+
+   // This function subcribes moveEvent in gameManagerSO
    private void MoveToCellPos(){
         Vector3 cellPos = detectCellMove.getPos;
         float dis = Vector3.Distance(cellPos, transform.position);
