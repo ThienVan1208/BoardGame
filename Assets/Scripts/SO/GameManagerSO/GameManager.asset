@@ -16,3 +16,42 @@ MonoBehaviour:
   moveEvent: {fileID: 11400000, guid: 1d9b3e1c7c3506643ad7a1f860435bfb, type: 2}
   endMoveEvent: {fileID: 11400000, guid: 40430602a50943442884869b591b5051, type: 2}
   beginMoveEvent: {fileID: 11400000, guid: 4a4765e4e5dcfb74283e5e216a98f000, type: 2}
+  playerTurnEvent: {fileID: 11400000, guid: df7c813945757a346b017ed4c81d0fa2, type: 2}
+  enemyTurnEvent: {fileID: 11400000, guid: 67198c7e4321e6e459aa281341811228, type: 2}
+  endTurnEvent: {fileID: 11400000, guid: a7b0ddb966773e244b9f86a01974ea5b, type: 2}
+  beginMove:
+    m_Name: BeginMove
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: c13eb4f1-bda0-4552-a551-0bad26b1245d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  endMove:
+    m_Name: EndMove
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 4316614c-f0ba-44da-82a9-0e5822806185
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rollDice:
+    m_Name: RollDice
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 1fc00d4f-a666-441e-84ac-245903841425
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  instruction:
+    m_Name: OpenInstruction
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: a02e8d60-476b-4117-bc1c-5d051880ee5c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0

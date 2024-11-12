@@ -11,12 +11,12 @@ public class CellIndicator : MonoBehaviour
     public Vector3 getPos;
     private void OnEnable() {
         // Subcribe playerMove in gameManagerSO.
-        gameManagerSO.playerMove = gameManagerSO.gameControl.CharMoveEvent.PlayerMovement;
-        gameManagerSO.playerMove.Enable();
-        gameManagerSO.playerMove.performed += gameManagerSO.PlayerMove;
+        // gameManagerSO.playerMove = gameManagerSO.gameControl.CharMoveEvent.PlayerMovement;
+        // gameManagerSO.playerMove.Enable();
+        // gameManagerSO.playerMove.performed += gameManagerSO.PlayerMove;
     }
     private void OnDisable() {
-        gameManagerSO.playerMove.Disable();
+        // gameManagerSO.playerMove.Disable();
     }
     private void FollowMousePos()
     {
@@ -30,13 +30,13 @@ public class CellIndicator : MonoBehaviour
             getPos = hit.point;
             Vector3Int cellPos = grid.WorldToCell(getPos);
             getPos = grid.GetCellCenterWorld(cellPos);
+            if(Input.GetMouseButtonDown(0)) {
+                gameManagerSO.ActiveMoveEvent();
+            }
         }
         transform.position = getPos;
     }
     private void Update() {
         FollowMousePos();
-        // if(Input.GetMouseButtonDown(0)){
-        //     gameManagerSO.ActiveMoveEvent();
-        // }
     }
 }

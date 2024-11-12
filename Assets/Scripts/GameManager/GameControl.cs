@@ -118,6 +118,34 @@ public partial class @GameControl: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Instruction"",
+            ""id"": ""3999b4c0-c991-4a6b-a939-ee8898815e68"",
+            ""actions"": [
+                {
+                    ""name"": ""OpenInstruction"",
+                    ""type"": ""Button"",
+                    ""id"": ""a02e8d60-476b-4117-bc1c-5d051880ee5c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a403b8e9-a077-4e26-ae71-9b22ab893249"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenInstruction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -130,6 +158,9 @@ public partial class @GameControl: IInputActionCollection2, IDisposable
         // CharMoveEvent
         m_CharMoveEvent = asset.FindActionMap("CharMoveEvent", throwIfNotFound: true);
         m_CharMoveEvent_PlayerMovement = m_CharMoveEvent.FindAction("PlayerMovement", throwIfNotFound: true);
+        // Instruction
+        m_Instruction = asset.FindActionMap("Instruction", throwIfNotFound: true);
+        m_Instruction_OpenInstruction = m_Instruction.FindAction("OpenInstruction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -295,6 +326,52 @@ public partial class @GameControl: IInputActionCollection2, IDisposable
         }
     }
     public CharMoveEventActions @CharMoveEvent => new CharMoveEventActions(this);
+
+    // Instruction
+    private readonly InputActionMap m_Instruction;
+    private List<IInstructionActions> m_InstructionActionsCallbackInterfaces = new List<IInstructionActions>();
+    private readonly InputAction m_Instruction_OpenInstruction;
+    public struct InstructionActions
+    {
+        private @GameControl m_Wrapper;
+        public InstructionActions(@GameControl wrapper) { m_Wrapper = wrapper; }
+        public InputAction @OpenInstruction => m_Wrapper.m_Instruction_OpenInstruction;
+        public InputActionMap Get() { return m_Wrapper.m_Instruction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InstructionActions set) { return set.Get(); }
+        public void AddCallbacks(IInstructionActions instance)
+        {
+            if (instance == null || m_Wrapper.m_InstructionActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InstructionActionsCallbackInterfaces.Add(instance);
+            @OpenInstruction.started += instance.OnOpenInstruction;
+            @OpenInstruction.performed += instance.OnOpenInstruction;
+            @OpenInstruction.canceled += instance.OnOpenInstruction;
+        }
+
+        private void UnregisterCallbacks(IInstructionActions instance)
+        {
+            @OpenInstruction.started -= instance.OnOpenInstruction;
+            @OpenInstruction.performed -= instance.OnOpenInstruction;
+            @OpenInstruction.canceled -= instance.OnOpenInstruction;
+        }
+
+        public void RemoveCallbacks(IInstructionActions instance)
+        {
+            if (m_Wrapper.m_InstructionActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IInstructionActions instance)
+        {
+            foreach (var item in m_Wrapper.m_InstructionActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_InstructionActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public InstructionActions @Instruction => new InstructionActions(this);
     public interface IMoveEventActions
     {
         void OnBeginMove(InputAction.CallbackContext context);
@@ -304,5 +381,9 @@ public partial class @GameControl: IInputActionCollection2, IDisposable
     public interface ICharMoveEventActions
     {
         void OnPlayerMovement(InputAction.CallbackContext context);
+    }
+    public interface IInstructionActions
+    {
+        void OnOpenInstruction(InputAction.CallbackContext context);
     }
 }

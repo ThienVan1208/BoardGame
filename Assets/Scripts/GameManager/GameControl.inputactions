@@ -96,6 +96,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Instruction",
+            "id": "3999b4c0-c991-4a6b-a939-ee8898815e68",
+            "actions": [
+                {
+                    "name": "OpenInstruction",
+                    "type": "Button",
+                    "id": "a02e8d60-476b-4117-bc1c-5d051880ee5c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a403b8e9-a077-4e26-ae71-9b22ab893249",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInstruction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

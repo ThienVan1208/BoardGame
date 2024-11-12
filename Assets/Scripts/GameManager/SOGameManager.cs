@@ -12,13 +12,19 @@ public class SOGameManager : ScriptableObject
     public VoidEventChannelSO moveEvent;
     public VoidEventChannelSO endMoveEvent;
     public VoidEventChannelSO beginMoveEvent;
+    public VoidEventChannelSO playerTurnEvent;
+    public VoidEventChannelSO enemyTurnEvent;
+    public VoidEventChannelSO endTurnEvent;
 
     public GameControl gameControl;// New input system
     public InputAction beginMove;
     public InputAction endMove;
     public InputAction rollDice;
-    public InputAction playerMove;
+    //public InputAction playerMove;// in CellIndicator
 
+    // This is used in Instruction.
+    public InputAction instruction;
+    
     /*
     * This is used in CellIndicator, in Update method, when click mouse left
     * The variable moveEvent is subcribed by Player
@@ -28,11 +34,7 @@ public class SOGameManager : ScriptableObject
         moveEvent.RaisedEvent();
     }
     
-    // This is subcribed in CellIndicator.
-    public void PlayerMove(InputAction.CallbackContext context){
-        ActiveMoveEvent();
-    }
-
+   
 
     /*
     * This lies in BeginMove func.
@@ -74,11 +76,25 @@ public class SOGameManager : ScriptableObject
     {
         rollEvent.RaisedEvent();
     }
-
     public void RollDice(InputAction.CallbackContext context)
     {
         ActiveRollEvent();
     }
 
-    
+
+    /*
+    * 2 methods below is used to trigger player/enemy turn in button canvas.
+    */
+    public void PlayerTurnEvent(){
+        playerTurnEvent.RaisedEvent();
+    }
+    public void EnemyTurnEvent(){
+        enemyTurnEvent.RaisedEvent();
+        ActiveEndMoveEvent();
+    }
+
+    public void EndTurnEvent(){
+        endTurnEvent.RaisedEvent();
+        ActiveEndMoveEvent();
+    }
 }

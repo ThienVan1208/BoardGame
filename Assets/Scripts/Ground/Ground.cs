@@ -21,5 +21,7 @@ public class Ground : MonoBehaviour
     {
         yield return new WaitUntil(() => dice.rb.velocity == Vector3.zero);
         dice.SetActiveAllFaceDice();
+        yield return new WaitForSeconds(1f);
+        dice.InactiveDice();
     }
 }
